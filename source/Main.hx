@@ -73,6 +73,7 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
+		SUtil.gameCrashCheck();
 
 		if (stage != null)
 		{
@@ -110,7 +111,7 @@ class Main extends Sprite
 			game.width = Math.ceil(stageWidth / game.zoom);
 			game.height = Math.ceil(stageHeight / game.zoom);
 		}
-		
+		SUtil.doTheCheck();
 		hxvlc.util.Handle.init();
 		ClientPrefs.loadDefaultKeys();
 		var game = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate,
@@ -123,7 +124,7 @@ class Main extends Sprite
 
 		lime.utils.Log.throwErrors = false; // prevent shader crash erros jumpscare (i can see you FlxDrawQuadsItem)
 
-		#if !mobile
+		#if mobile
 		fpsVar = new FPS(5, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
@@ -143,6 +144,10 @@ class Main extends Sprite
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
 
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK]; 
+		#end
+			
 		#if DISCORD_ALLOWED
 		DiscordClient.prepare();
 		#end
@@ -186,7 +191,7 @@ class Main extends Sprite
 		dateNow = dateNow.replace(" ", "_");
 		dateNow = dateNow.replace(":", "'");
 
-		path = "./crash/" + "PsychEngine_" + dateNow + ".txt";
+		path = SUtil.getPath() + "crash/" + "PsychEngine_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -203,8 +208,8 @@ class Main extends Sprite
 			+ e.error
 			+ "\nPlease report this error to the GitHub page: https://github.com/ShadowMario/FNF-PsychEngine\n\n> Crash Handler written by: sqirra-rng";
 
-		if (!FileSystem.exists("./crash/"))
-			FileSystem.createDirectory("./crash/");
+		if (!FileSystem.exists(SUtil.getPath() + "crash/"))
+			FileSystem.createDirectory(SUtil.getPath() + "crash/");
 
 		File.saveContent(path, errMsg + "\n");
 
