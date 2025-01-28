@@ -33,7 +33,7 @@ class FunkinSoundTray extends FlxSoundTray
     super();
     removeChildren();
 
-    var bg:Bitmap = new Bitmap(Assets.getBitmapData(Paths.getPath("images/soundtray/volumebox.png", IMAGE)));
+    var bg:Bitmap = new Bitmap(Assets.getBitmapData(SUtil.getPath() + Paths.getPath("images/soundtray/volumebox.png", IMAGE)));
     bg.scaleX = graphicScale;
     bg.scaleY = graphicScale;
     addChild(bg);
@@ -43,7 +43,7 @@ class FunkinSoundTray extends FlxSoundTray
     visible = false;
 
     // makes an alpha'd version of all the bars (bar_10.png)
-    var backingBar:Bitmap = new Bitmap(Assets.getBitmapData(Paths.getPath("images/soundtray/barsBack.png", IMAGE)));
+    var backingBar:Bitmap = new Bitmap(Assets.getBitmapData(SUtil.getPath() + Paths.getPath("images/soundtray/barsBack.png", IMAGE)));
     backingBar.x = 9;
     backingBar.y = 8;
     backingBar.scaleX = graphicScale;
