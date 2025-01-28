@@ -102,6 +102,9 @@ class FreeplaySelectState extends MusicBeatState
 			curSelected = 0;
 
 		changeSelection();
+		#if android
+		addVirtualPad(UP_DOWN, A_B);
+		#end
 		super.create();
 	}
 
