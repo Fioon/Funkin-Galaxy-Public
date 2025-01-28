@@ -31,7 +31,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
+	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false"/>
 
 	<!--Switch-specific-->
 	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
@@ -45,13 +45,13 @@
 	<classpath name="source" />
 
 	<!-- PSYCH ENGINE CUSTOMIZATION -->
-	<define name="MODS_ALLOWED" if="desktop" />
-	<define name="LUA_ALLOWED" if="desktop" />
+	<define name="MODS_ALLOWED" if="android" />
+	<define name="LUA_ALLOWED" if="android" />
 	<define name="ACHIEVEMENTS_ALLOWED" />
 	<!-- I didn't know if code would break if I just had "if debug" laying in some code but I didn't wanna risk it. -->
 	<!-- define name="debug" if="debug" Stupid code. /--> <!--yes Ivan, this is stupid code seeing how you used it-->
 
-	<define name="VIDEOS_ALLOWED" if="web || windows" unless="32bits" />
+	<define name="VIDEOS_ALLOWED" if="android" unless="32bits" />
 	<!-- <define name="PSYCH_WATERMARKS"/> --> <!-- DELETE THIS TO REMOVE WATERMARKS/DEV NAMES ON TITLE SCREEN -->
 	<!-- <define name="TITLE_SCREEN_EASTER_EGG" if="officialBuild"/> --> <!-- DELETE THE if="officialBuild" for enabling this on an unofficial build -->
 	<define name="CRASH_HANDLER" if="desktop release" />
