@@ -8,7 +8,7 @@ class Language {
             return langCache.get(language).get(stringToLookFor);
         } else {
             var daMap:Map<String, String> = (langCache.exists(language) ? langCache.get(language) : []);
-            var json = haxe.Json.parse(sys.io.File.getContent("assets/languages/" + language + ".json"));
+            var json = haxe.Json.parse(sys.io.File.getContent(SUtil.getPath() + "assets/languages/" + language + ".json"));
             haxeInterp.variables.set('json', json);
 		    var toParse = haxeParser.parseString('return json.${stringToLookFor};');
 		    var gotTranslated = haxeInterp.execute(toParse);
