@@ -430,6 +430,7 @@ class FreeplayState extends MusicBeatSubstate
 			                        FlxG.resetState();
 			                        #else
 			                        close();
+						#end
 					});
 				});
 			}
