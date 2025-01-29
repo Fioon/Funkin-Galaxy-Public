@@ -112,6 +112,9 @@ class SaveSelectState extends MusicBeatState
 
 		if (!fromDeleteMenu && !fromOptionsMenu) FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
 
+		#if android
+                addVirtualPad(NONE, B);
+                #end
 		super.create();
 	}
 
