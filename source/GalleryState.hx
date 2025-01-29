@@ -47,7 +47,7 @@ class GalleryState extends MusicBeatState
     {   
         FlxG.sound.playMusic(Paths.music("TownNightGallery"));
 
-        var jsonData:String = File.getContent("assets/images/gallery/gallery.json");
+        var jsonData:String = File.getContent(SUtil.getPath() + "assets/images/gallery/gallery.json");
         var imageData:Array<Dynamic> = haxe.Json.parse(jsonData);
 
         // Set up background
@@ -109,6 +109,9 @@ class GalleryState extends MusicBeatState
     
         persistentUpdate = true;
         changeSelection();
+        #if android
+        addVirtualPad(FULL, A_B);
+        #end
         super.create();
     }
 
