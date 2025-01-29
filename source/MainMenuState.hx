@@ -171,7 +171,7 @@ class MainMenuState extends MusicBeatState
 		#end
 			
                 #if android
-		addVirtualPad(NONE, B);
+		addVirtualPad(NONE, A);
 		#end
 			
 		super.create();
@@ -232,7 +232,7 @@ class MainMenuState extends MusicBeatState
 				if (optionShit[curSelected] == 'donate')
 				{
 					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
-countShit = 0;
+					countShit = 0;
 				}
 				else
 				{
@@ -263,22 +263,22 @@ countShit = 0;
 								{
 									case 'story_mode':
 										MusicBeatState.switchState(new StoryMenuState());
-countShit = 0;
+										countShit = 0;
 									case 'freeplay':
 										MusicBeatState.switchState(new FreeplaySelectState());
-countShit = 0;
+										countShit = 0;
 									case 'awards':
 										MusicBeatState.switchState(new AchievementsMenuState());
-countShit = 0;
+										countShit = 0;
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
-countShit = 0;
+										countShit = 0;
 									case 'gallery':
 										MusicBeatState.switchState(new GalleryState());
-countShit = 0;
+										countShit = 0;
 									case 'options':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
-countShit = 0;
+										countShit = 0;
 								}
 							});
 						}
