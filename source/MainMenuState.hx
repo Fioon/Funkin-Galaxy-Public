@@ -171,7 +171,7 @@ class MainMenuState extends MusicBeatState
 		#end
 			
                 #if android
-		addVirtualPad(UP_DOWN, A_B);
+		addVirtualPad(NONE, B);
 		#end
 			
 		super.create();
@@ -198,6 +198,17 @@ class MainMenuState extends MusicBeatState
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 7.5, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 
+		if(FlxG.mouse.justPressed){
+			if(countShit < 2){
+				countShit += 1;
+			}else{
+				if(controls.ACCEPT){
+					countShit = 2;
+				}else{
+					countShit = 0;
+				}
+			}
+		}//shit code for android port lol
 		
 		if (FlxG.keys.pressed.CONTROL && FlxG.keys.pressed.ALT && FlxG.keys.pressed.SPACE) {
 			FlxG.stage.window.alert("This menu doesn't exist anymore since it's managed by Discord! So that means you can freely use chart editor.");
@@ -216,11 +227,12 @@ class MainMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
-			if (controls.ACCEPT)
+			if (controls.ACCEPT || countShit == 2)
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
 					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
+countShit = 0;
 				}
 				else
 				{
@@ -251,16 +263,22 @@ class MainMenuState extends MusicBeatState
 								{
 									case 'story_mode':
 										MusicBeatState.switchState(new StoryMenuState());
+countShit = 0;
 									case 'freeplay':
 										MusicBeatState.switchState(new FreeplaySelectState());
+countShit = 0;
 									case 'awards':
 										MusicBeatState.switchState(new AchievementsMenuState());
+countShit = 0;
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
+countShit = 0;
 									case 'gallery':
 										MusicBeatState.switchState(new GalleryState());
+countShit = 0;
 									case 'options':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
+countShit = 0;
 								}
 							});
 						}
