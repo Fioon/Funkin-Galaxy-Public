@@ -216,7 +216,7 @@ class MainMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
-			if (controls.ACCEPT || FlxG.mouse.justPressed)
+			if (controls.ACCEPT)
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
