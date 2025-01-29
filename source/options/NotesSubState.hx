@@ -200,6 +200,7 @@ class NotesSubState extends MusicBeatSubstate
 			applyPreset(selectedPreset);
 		});
 		add(buttonLoad);
+		addVirtualPad(FULL, A_B);
 	}
 
 	var presetName:FlxInputText;
