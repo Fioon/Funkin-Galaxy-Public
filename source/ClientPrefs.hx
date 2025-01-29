@@ -25,6 +25,8 @@ class ClientPrefs {
 	public static var camZooms:Bool = true;
 	public static var hideHud:Bool = false;
 	public static var noteOffset:Int = 0;
+	public static var hitboxmode:String = 'Classic';  //starting new way to change between hitboxes yay
+        public static var hitboxalpha:Float = 0.2; //someone request this lol
 	public static var arrowRGB:Array<Array<FlxColor>> = [
 		[0xFFC24B99, 0xFFFFFFFF, 0xFF3C1F56],
 		[0xFF00FFFF, 0xFFFFFFFF, 0xFF1542B7],
@@ -162,6 +164,8 @@ class ClientPrefs {
 		FlxG.save.data.checkForUpdates = checkForUpdates;
 		FlxG.save.data.comboStacking = comboStacking;
 		FlxG.save.data.GPUCaching = GPUCaching;
+		FlxG.save.data.hitboxmode = hitboxmode;
+                FlxG.save.data.hitboxalpha = hitboxalpha;
 	
 		FlxG.save.flush();
 
@@ -296,7 +300,13 @@ class ClientPrefs {
 		
 		if (FlxG.save.data.GPUCaching != null)
 			GPUCaching = FlxG.save.data.GPUCaching;
-
+		if(FlxG.save.data.hitboxmode != null) {
+                    hitboxmode = FlxG.save.data.hitboxmode;
+                }
+                if(FlxG.save.data.hitboxalpha != null) {
+                    hitboxalpha = FlxG.save.data.hitboxalpha;
+		}
+		
 		var save:FlxSave = new FlxSave();
 		save.bind('controls_v2', 'ninjamuffin99');
 		if(save != null && save.data.customControls != null) {
