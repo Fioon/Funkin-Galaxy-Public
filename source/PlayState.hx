@@ -856,26 +856,26 @@ class PlayState extends MusicBeatState
 		var file:String = Paths.json(songName + '/dialogue'); // Checks for json/Psych Engine dialogue
 		if (OpenFlAssets.exists(file))
 		{
-			dialogueJson = DialogueBoxPsych.parseDialogue(file);
+			dialogueJson = DialogueBoxPsych.parseDialogue(SUtil.getPath() + file);
 		}
 
 		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); // Checks for vanilla/Senpai dialogue
 		if (OpenFlAssets.exists(file))
 		{
-			dialogue = CoolUtil.coolTextFile(file);
+			dialogue = CoolUtil.coolTextFile(SUtil.getPath() + file);
 		}
 
 		var file:String = Paths.txt(songName + '/' + songName + 'DialogueNew'); // Checks for new cutscene dialogue
 		if (FileSystem.exists(file))
 		{
 			startdialog = true;
-			dialoguenew = CoolUtil.coolTextFile(file);
+			dialoguenew = CoolUtil.coolTextFile(SUtil.getPath() + file);
 		}
 
 		var file:String = Paths.txt(songName + '/' + songName + 'DialogueNewEnd');
 		if (FileSystem.exists(file))
 		{
-			dialogueend = CoolUtil.coolTextFile(file);
+			dialogueend = CoolUtil.coolTextFile(SUtil.getPath() + file);
 			hasendingdialog = true;
 		}
 
@@ -1098,6 +1098,10 @@ class PlayState extends MusicBeatState
 		for (obj in objs)
 			obj.cameras = [camHUD];
 
+		#if android
+		addAndroidControls();
+		androidc.visible = false;
+		#end
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
 		// UI_camera.zoom = 1;
@@ -1837,6 +1841,10 @@ class PlayState extends MusicBeatState
 			if (skipCountdown || startOnTime > 0)
 				skipArrowStartTween = true;
 
+			#if android
+			androidc.visible = true;
+			#end
+				
 			generateStaticArrows(0);
 			generateStaticArrows(1);
 			for (i in 0...playerStrums.length)
@@ -2836,7 +2844,7 @@ class PlayState extends MusicBeatState
 			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
 		}
 
-		if (controls.PAUSE && startedCountdown && canPause)
+		if (FlxG.android.justReleased.BACK && startedCountdown && canPause)
 		{
 			var ret:Dynamic = callOnLuas('onPause', [], false);
 			if (ret != FunkinLua.Function_Stop)
@@ -3987,6 +3995,10 @@ class PlayState extends MusicBeatState
 
 		deathCounter = 0;
 		seenCutscene = false;
+
+		#if android
+		androidc.visible = false;
+		#end
 
 		#if ACHIEVEMENTS_ALLOWED
 		if (achievementObj != null)
