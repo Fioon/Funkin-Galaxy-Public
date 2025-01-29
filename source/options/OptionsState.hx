@@ -44,6 +44,9 @@ class OptionsState extends MusicBeatState
 	}
 
 	function openSelectedSubstate(label:String) {
+		#if android
+		removeVirtualPad();
+		#end
 		switch(label) {
 			case 'Note Colors':
 				openSubState(new options.NotesSubState());
@@ -104,6 +107,10 @@ class OptionsState extends MusicBeatState
 
 		if(PauseSubState.isInPause == true) FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
 
+		#if android
+		addVirtualPad(UP_DOWN, A_B_E);
+		#end
+			
 		super.create();
 	}
 
@@ -137,6 +144,10 @@ class OptionsState extends MusicBeatState
 			else
 				openSelectedSubstate(options[curSelected]);
 		}
+		
+		if (_virtualpad.buttonE.justPressed)
+			MusicBeatState.switchState(new android.AndroidControlsMenu());
+	        }
 	}
 	
 	function changeSelection(change:Int = 0) {
