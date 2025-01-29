@@ -59,7 +59,7 @@ class FunkinSoundTray extends FlxSoundTray
     // we are trying to get assets bars_1-10
     for (i in 1...11)
     {
-      var bar:Bitmap = new Bitmap(Assets.getBitmapData(Paths.getPath("images/soundtray/bars_" + i + ".png", IMAGE)));
+      var bar:Bitmap = new Bitmap(Assets.getBitmapData(SUtil.getPath() + Paths.getPath("images/soundtray/bars_" + i + ".png", IMAGE)));
       bar.x = 9;
       bar.y = 8;
       bar.scaleX = graphicScale;
