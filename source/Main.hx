@@ -111,6 +111,13 @@ class Main extends Sprite
 			game.width = Math.ceil(stageWidth / game.zoom);
 			game.height = Math.ceil(stageHeight / game.zoom);
 		}
+
+		#if android
+		game.width = 1280;
+		game.height = 720;
+		game.zoom = 1;
+		#end
+			
 		SUtil.doTheCheck();
 		hxvlc.util.Handle.init();
 		ClientPrefs.loadDefaultKeys();
