@@ -262,6 +262,9 @@ class FreeplayState extends MusicBeatSubstate
 				canMove = true;
 			});
 		});
+		#if android
+                addVirtualPad(FULL, A_B_X_Y);
+                #end
 	}
 
 	var instantAlph = true;
@@ -323,8 +326,8 @@ class FreeplayState extends MusicBeatSubstate
 		scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
 		positionHighscore();
 		var accepted = controls.ACCEPT && canMove;
-		var space = FlxG.keys.justPressed.SPACE && canMove;
-		var ctrl = FlxG.keys.justPressed.CONTROL && canMove;
+		var space = _virtualpad.buttonY.justPressed && canMove;
+		var ctrl = _virtualpad.buttonX.justPressed && canMove;
 
 		var shiftMult:Int = 1;
 		if(FlxG.keys.pressed.SHIFT && canMove) shiftMult = 3;
