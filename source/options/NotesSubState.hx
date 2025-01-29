@@ -200,7 +200,7 @@ class NotesSubState extends MusicBeatSubstate
 			applyPreset(selectedPreset);
 		});
 		add(buttonLoad);
-		addVirtualPad(FULL, A_B);
+		addVirtualPad(NONE, B);
 	}
 
 	var presetName:FlxInputText;
@@ -240,7 +240,7 @@ class NotesSubState extends MusicBeatSubstate
 
 	override function update(elapsed:Float) {
 		if (controls.BACK || FlxG.keys.pressed.BACKSPACE) {
-			if (FlxG.keys.pressed.BACKSPACE || FlxG.keys.pressed.ESCAPE) {
+			if (FlxG.keys.pressed.BACKSPACE || controls.BACK) {
 				if (presetName.hasFocus)
 					return;
 				else {
