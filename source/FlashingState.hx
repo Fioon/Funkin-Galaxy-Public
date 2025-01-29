@@ -70,7 +70,9 @@ class FlashingState extends MusicBeatState
 		//bro I will fucking smite you
 		//too bad
 		
-		
+		#if android
+		addVirtualPad(NONE, A_B);
+		#end
 	}
 	
 	override function update(elapsed:Float)
