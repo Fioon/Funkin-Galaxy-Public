@@ -264,6 +264,7 @@ class FreeplayState extends MusicBeatSubstate
 			});
 		});
 		#if android
+		removeVirtualPad();
                 addVirtualPad(FULL, A_B_X_Y);
                 #end
 	}
