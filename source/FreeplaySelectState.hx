@@ -112,6 +112,7 @@ class FreeplaySelectState extends MusicBeatState
 	{
 		changeSelection(0, false);
 		persistentUpdate = true;
+		removeVirtualPad();
 		addVirtualPad(UP_DOWN, A_B);
 		super.closeSubState();
 	}
@@ -193,9 +194,6 @@ class FreeplaySelectState extends MusicBeatState
 
 		if (accepted && canMove)
 		{
-			#if android
-		        removeVirtualPad();
-		        #end
 			var freeplay:FreeplayState = new FreeplayState(songs[curSelected].weekName);
 			freeplay.openCallback = function()
 			{
@@ -203,6 +201,9 @@ class FreeplaySelectState extends MusicBeatState
 				{
 					for (item in grpSongs.members)
 					{
+						#if android
+		                                removeVirtualPad();
+		                                #end
 						if (weekToOpen != null)
 						{
 							item.startPosition.x = -1000;
