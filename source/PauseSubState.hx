@@ -179,13 +179,14 @@ class PauseSubState extends MusicBeatSubstate
 		startModeTimer();
 
 		#if android
-		addVirtualPad(UP_DOWN, A);
+		addVirtualPad(FULL, A);
 		addPadCamera();
 		#end
 	}
 
 	var holdTime:Float = 0;
 	var cantUnpause:Float = 0.1;
+	var countShit:Int = 0;
 	override function update(elapsed:Float)
 	{
 		cantUnpause -= elapsed;
@@ -244,7 +245,19 @@ class PauseSubState extends MusicBeatSubstate
 				}
 		}
 
-		if ((accepted || FlxG.mouse.justPressed) && (pauseIntro==false) && (pauseOutro==false) && (cantUnpause <= 0 || !ClientPrefs.controllerMode))
+                if(FlxG.mouse.justPressed){
+			if(countShit < 2){
+				countShit += 1;
+			}else{
+				if(controls.ACCEPT){
+					countShit = 2;
+				}else{
+					countShit = 0;
+				}
+			}
+		}
+
+		if ((accepted || countShit == 2) && (pauseIntro==false) && (pauseOutro==false) && (cantUnpause <= 0 || !ClientPrefs.controllerMode))
 		{
 			if (menuItems == difficultyChoices)
 			{
@@ -290,6 +303,7 @@ class PauseSubState extends MusicBeatSubstate
 
 				switch(daSelected){
 					case "Exit to Menu":
+						countShit = 0;
 						PlayState.deathCounter = 0;
 						PlayState.seenCutscene = false;
 						isInPause = false;
@@ -315,10 +329,13 @@ class PauseSubState extends MusicBeatSubstate
 					switch(daSelected){
 						case "Resume":
 							MouseCursors.loadCursor("galaxy");
+							countShit = 0;
 							close();
 						case "Restart Song":
+							countShit = 0;
 							restartSong();
 						case "Options":
+							countShit = 0;
 							LoadingState.loadAndSwitchState(new options.OptionsState());
 							isInPause = true;
 						}
