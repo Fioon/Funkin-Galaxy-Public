@@ -200,7 +200,7 @@ class NotesSubState extends MusicBeatSubstate
 			applyPreset(selectedPreset);
 		});
 		add(buttonLoad);
-		addVirtualPad(NONE, B);
+		//addVirtualPad(NONE, B);
 	}
 
 	var presetName:FlxInputText;
@@ -239,8 +239,8 @@ class NotesSubState extends MusicBeatSubstate
 		NUMPADSEVEN => '7', NUMPADEIGHT => '8', NUMPADNINE => '9', A => 'A', B => 'B', C => 'C', D => 'D', E => 'E', F => 'F'];
 
 	override function update(elapsed:Float) {
-		if (controls.BACK || FlxG.keys.pressed.BACKSPACE) {
-			if (FlxG.keys.pressed.BACKSPACE || controls.BACK) {
+		if (controls.BACK || FlxG.keys.pressed.BACKSTAGE || FlxG.android.justReleased.BACK) {
+			if (FlxG.keys.pressed.BACKSPACE || controls.BACK || FlxG.android.justReleased.BACK) {
 				if (presetName.hasFocus)
 					return;
 				else {
