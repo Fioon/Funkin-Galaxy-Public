@@ -118,7 +118,7 @@ class Main extends Sprite
 		SUtil.doTheCheck();
 		hxvlc.util.Handle.init();
 		ClientPrefs.loadDefaultKeys();
-		SUtil.applicationAlert('Test','01');
+		Application.current.window.alert('Test', '01');
 		var game = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate,
 			game.skipSplash, game.startFullscreen);
 
@@ -126,7 +126,7 @@ class Main extends Sprite
 		game._customSoundTray = FunkinSoundTray;
 
 		addChild(game);
-		SUtil.applicationAlert('Test','02');
+		Application.current.window.alert('Test', '02');
 
 		//lime.utils.Log.throwErrors = false; // prevent shader crash erros jumpscare (i can see you FlxDrawQuadsItem)
 
@@ -140,7 +140,7 @@ class Main extends Sprite
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
 		#end
-		SUtil.applicationAlert('Test','03');
+		Application.current.window.alert('Test', '03');
 
 		#if html5
 		FlxG.autoPause = false;
@@ -176,7 +176,7 @@ class Main extends Sprite
 				resetSpriteCache(FlxG.stage);
 		});
 		#end
-		SUtil.applicationAlert('Test','04');
+		Application.current.window.alert('Test', '04');
 	}
 
 	static function resetSpriteCache(sprite:Dynamic):Void
