@@ -116,6 +116,9 @@ class Main extends Sprite
 		#end
 			
 		SUtil.doTheCheck();
+		SUtil.gameCrashCheck();
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+
 		hxvlc.util.Handle.init();
 		ClientPrefs.loadDefaultKeys();
 		Application.current.window.alert('Test', '01');
@@ -147,9 +150,7 @@ class Main extends Sprite
 		FlxG.mouse.visible = false;
 		#end
 
-		SUtil.gameCrashCheck();
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
-
+		
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK]; 
 		#end
