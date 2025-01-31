@@ -44,8 +44,8 @@ class Main extends Sprite
 	public static var fpsVar:FPS;
 	public static var fpsText(default, set):String = "FPS";
 	public static var memoryText(default, set):String = "Memory";
-	static var oldFpsText:String = "FPS";
-	static var oldMemoryText:String = "Memory";
+	static var oldFpsText:String = "          FPS";
+	static var oldMemoryText:String = "          Memory";
 
 	public static function set_fpsText(v:String):String
 	{
@@ -116,17 +116,16 @@ class Main extends Sprite
 		#end
 			
 		SUtil.doTheCheck();
-		SUtil.gameCrashCheck();
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
-
+		
 		hxvlc.util.Handle.init();
 		ClientPrefs.loadDefaultKeys();
 		Application.current.window.alert('Test', '01');
-		var game = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate,
-			game.skipSplash, game.startFullscreen);
+		//var game = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate,
+			//game.skipSplash, game.startFullscreen);
+		addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen));
 
 		@:privateAccess
-		game._customSoundTray = FunkinSoundTray;
+		//game._customSoundTray = FunkinSoundTray;
 
 		addChild(game);
 		Application.current.window.alert('Test', '02');
@@ -150,7 +149,9 @@ class Main extends Sprite
 		FlxG.mouse.visible = false;
 		#end
 
-		
+		SUtil.gameCrashCheck();
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK]; 
 		#end
