@@ -120,14 +120,13 @@ class Main extends Sprite
 		hxvlc.util.Handle.init();
 		ClientPrefs.loadDefaultKeys();
 		Application.current.window.alert('Test', '01');
-		//var game = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate,
-			//game.skipSplash, game.startFullscreen);
-		addChild(new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
+		var game = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen);
+		//addChild(new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
 
-		//@:privateAccess
+		@:privateAccess
 		//game._customSoundTray = FunkinSoundTray;
 
-		//addChild(game);
+		addChild(game);
 		Application.current.window.alert('Test', '02');
 
 		//lime.utils.Log.throwErrors = false; // prevent shader crash erros jumpscare (i can see you FlxDrawQuadsItem)
