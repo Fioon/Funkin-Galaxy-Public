@@ -124,7 +124,7 @@ class Main extends Sprite
 		//addChild(new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
 
 		@:privateAccess
-		//game._customSoundTray = FunkinSoundTray;
+		game._customSoundTray = FunkinSoundTray;
 
 		addChild(game);
 		Application.current.window.alert('Test', '02');
