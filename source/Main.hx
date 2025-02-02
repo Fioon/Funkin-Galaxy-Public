@@ -44,8 +44,8 @@ class Main extends Sprite
 	public static var fpsVar:FPS;
 	public static var fpsText(default, set):String = "FPS";
 	public static var memoryText(default, set):String = "Memory";
-	static var oldFpsText:String = "          FPS";
-	static var oldMemoryText:String = "          Memory";
+	static var oldFpsText:String = "FPS";
+	static var oldMemoryText:String = "Memory";
 
 	public static function set_fpsText(v:String):String
 	{
@@ -119,7 +119,7 @@ class Main extends Sprite
 		
 		hxvlc.util.Handle.init();
 		ClientPrefs.loadDefaultKeys();
-		Application.current.window.alert('Test', '01');
+		//Application.current.window.alert('Test', '01');
 		var game = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen);
 		//addChild(new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
 
@@ -127,7 +127,7 @@ class Main extends Sprite
 		game._customSoundTray = FunkinSoundTray;
 
 		addChild(game);
-		Application.current.window.alert('Test', '02');
+		//Application.current.window.alert('Test', '02');
 
 		//lime.utils.Log.throwErrors = false; // prevent shader crash erros jumpscare (i can see you FlxDrawQuadsItem)
 
@@ -141,7 +141,7 @@ class Main extends Sprite
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
 		#end
-		Application.current.window.alert('Test', '03');
+		//Application.current.window.alert('Test', '03');
 
 		#if html5
 		FlxG.autoPause = false;
@@ -160,7 +160,6 @@ class Main extends Sprite
 		#end
 
 		// shader coords fix
-		#if windows
 		FlxG.signals.gameResized.add(function(w, h)
 		{
 			if (FlxG.cameras != null)
@@ -176,8 +175,8 @@ class Main extends Sprite
 			if (FlxG.stage != null)
 				resetSpriteCache(FlxG.stage);
 		});
-		#end
-		Application.current.window.alert('Test', '04');
+	
+		//Application.current.window.alert('Test', '04');
 	}
 
 	static function resetSpriteCache(sprite:Dynamic):Void
