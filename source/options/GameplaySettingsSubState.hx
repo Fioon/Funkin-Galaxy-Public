@@ -135,26 +135,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		false);
 		addOption(option);
 
-		var option:Option = new Option('Hitbox Mode:',
-                        "Android Hitbox Setting \n Choose your Hitbox Style.",
-                        'hitboxmode',
-                        'string',
-                        'Classic',
-                        ['Classic', 'New']);
-                addOption(option);
-
-                var option:Option = new Option('Hitbox Opacity', //mariomaster was here again
-                        'Android Hitbox Setting \n Changes opacity.',
-                        'hitboxalpha',
-                        'float',
-                        0.2);
-                option.scrollSpeed = 1.6;
-                option.minValue = 0.0;
-                option.maxValue = 1;
-                option.changeValue = 0.1;
-                option.decimals = 1;
-                addOption(option);
-
 		super();
 	}
 
