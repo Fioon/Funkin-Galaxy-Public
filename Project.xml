@@ -102,7 +102,7 @@
 	<assets path="assets/fonts" embed='true'/>
 	<!-- _______________________________ Libraries ______________________________ -->
 
-	<haxelib name="openfl" version="9.3.0"/>
+	<haxelib name="openfl" version="9.3.4"/>
 
 	<haxelib name="flixel" version="4.11.0"/>
 	<haxedev set='webgl' />
