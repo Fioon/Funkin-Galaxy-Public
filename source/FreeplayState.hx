@@ -426,12 +426,8 @@ class FreeplayState extends MusicBeatSubstate
 					FlxTween.tween(starshroom, {x: -starshroom.width}, 0.7, {ease: FlxEase.circIn});
 					FlxTween.tween(arrow, {x: -arrow.width}, 0.5, {ease: FlxEase.circIn});
 					new FlxTimer().start(0.7, function(_) {
-						#if android
 			                        FlxTransitionableState.skipNextTransOut = true;
 			                        FlxG.resetState();
-			                        #else
-			                        close();
-						#end
 					});
 				});
 			}
