@@ -201,9 +201,7 @@ class FreeplaySelectState extends MusicBeatState
 				{
 					for (item in grpSongs.members)
 					{
-						#if android
 		                                removeVirtualPad();
-		                                #end
 						if (weekToOpen != null)
 						{
 							item.startPosition.x = -1000;
