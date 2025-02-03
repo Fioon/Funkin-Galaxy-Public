@@ -57,12 +57,12 @@
     {
       "name": "lime",
       "type": "haxelib",
-      "version": "8.2.2"
+      "version": "7.9.0"
     },
     {
       "name": "openfl",
       "type": "haxelib",
-      "version": "9.3.4"
+      "version": "9.3.0"
     }
   ]
 }
